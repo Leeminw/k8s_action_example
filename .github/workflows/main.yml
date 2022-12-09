@@ -25,11 +25,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest
       -
         name: Pull Trigger
         run: |
           curl -X POST ${{ secrets.DOCKER_PULL_TRIGGER_URL }} \
-          --data image=${{ secrets.DOCKER_IMAGE }} \
+          --data image=${{ secrets.DOCKER_IMAGE_NAME }} \
           --data port=8081 \
           --data targetPort=3000
